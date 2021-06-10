@@ -362,7 +362,7 @@ static void set_speed(uint8_t rhport, tusb_speed_t speed)
 
   // Clear and set speed bits
   dev->DCFG &= ~(3 << USB_OTG_DCFG_DSPD_Pos);
-  dev->DCFG |= (bitvalue << USB_OTG_DCFG_DSPD_Pos);
+  dev->DCFG |= (bitvalue << USB_OTG_DCFG_DSPD_Pos) | (1<<14); // add XCVRDLY due to https://github.com/hathach/tinyusb/issues/496
 }
 
 #if defined(USB_HS_PHYC)
